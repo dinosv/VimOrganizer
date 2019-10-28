@@ -168,8 +168,8 @@ function! org#RestoreLocation()
     endif
     call setpos( '.', g:location[1] )
 endfunction
-    
-    
+
+
 function! org#OpenCaptureFile()
     call org#LocateFile(g:org_capture_file)
 endfunction
@@ -183,7 +183,7 @@ function! org#CaptureBuffer()
 	exec 'bwipeout! ' . bufnr('_Org_Capture_')
     endif
     sp _Org_Capture_
-    autocmd BufWriteCmd <buffer> :call <SID>ProcessCapture() 
+    autocmd BufWriteCmd <buffer> :call <SID>ProcessCapture()
     "autocmd BufLeave <buffer> :bwipeout
     autocmd BufUnload <buffer> :set nomodified
     set nobuflisted

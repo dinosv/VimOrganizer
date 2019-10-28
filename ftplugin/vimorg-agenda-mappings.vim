@@ -5,10 +5,10 @@
 " Last Change: 2011 Nov 02
 "
 " Script: http://www.vim.org/scripts/script.php?script_id=3342
-" Github page: http://github.com/hsitz/VimOrganizer 
+" Github page: http://github.com/hsitz/VimOrganizer
 " Copyright: (c) 2010, 2011 by Herbert Sitz
 " The VIM LICENSE applies to all files in the
-" VimOrganizer plugin.  
+" VimOrganizer plugin.
 " (See the Vim copyright except read "VimOrganizer"
 " in places where that copyright refers to "Vim".)
 " http://vimdoc.sourceforge.net/htmldoc/uganda.html#license
@@ -35,7 +35,7 @@
     nmap <silent> <buffer> <<           :call OrgAgendaDateInc('--1d')<CR>
     nmap <silent> <buffer> <localleader>t    :call OrgTodoDashboard()<CR>
     nmap <silent> <buffer> <s-right>    :silent call {mysid}AgendaReplaceTodo()<CR>
-    
+
     nmap <silent> <buffer> <s-left>     :silent call {mysid}AgendaReplaceTodo('todo-bkwd')<CR>
     nmap <silent> <buffer> <space>      :call {mysid}ToggleHeadingMark(line('.'))<CR>
     nmap <silent> <buffer> <c-space>    :call {mysid}DeleteHeadingMarks()<CR>
@@ -54,7 +54,7 @@
     nmap <silent> <buffer> vy :call OrgRunCustom({'redo_num': line('.'), 'type':'agenda', 'agenda_date': g:agenda_startdate, 'agenda_duration':'y', 'spec': g:org_search_spec})<CR>
     nmap <silent> <buffer> f :<C-U>call OrgAgendaMove('forward',v:count1)<cr>
     nmap <silent> <buffer> b :<C-U>call OrgAgendaMove('backward',v:count1)<cr>
-    
+
     nmap <buffer> <silent> <tab> :call {mysid}OrgAgendaTab()<CR>
     "nmap <silent> <buffer> <s-CR> :call OrgAgendaGetText(1)<CR>
     nmap <silent> <buffer> r :call OrgRefreshCalendarAgenda()<CR>
@@ -72,4 +72,4 @@ function! OrgQuitAgenda()
     endif
     "quit
 endfunction
-   
+" vim600: set tabstop=4 shiftwidth=4 smarttab expandtab fdm=indent

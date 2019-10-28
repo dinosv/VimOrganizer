@@ -214,3 +214,4 @@ nnoremap <silent> <buffer> <localleader>k    :<c-u>call OrgMoveLevel(line("."),'
 nnoremap <silent> <buffer> <localleader>j    :<c-u>call OrgMoveLevel(line("."),'down',v:count1)<CR>
 nnoremap <silent> <buffer>  <localleader>np  :call OrgNewHead('levelup')<CR>
 nnoremap <silent> <buffer>  <localleader>ns  :call OrgNewHead('leveldown')<CR>
+" vim600: set tabstop=4 shiftwidth=4 smarttab expandtab fdm=indent

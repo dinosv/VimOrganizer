@@ -8410,4 +8410,4 @@ if exists('*OrgCustomSettings')
     call OrgCustomSettings()
 endif
 
-" vim600: set tabstop=4 shiftwidth=4 smarttab expandtab fdm=expr foldexpr=getline(v\:lnum)=~'^"Section'?0\:getline(v\:lnum+1)=~'^func'?'<0'\:'1':
+" vim600: set tabstop=4 shiftwidth=4 smarttab expandtab fdm=indent
