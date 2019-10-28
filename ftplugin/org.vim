@@ -8379,7 +8379,10 @@ function! MenuCycle()
     call OrgCycle()
 endfunction
 
-nmap <silent> <buffer> <localleader>t    :call OrgTodoDashboard()<CR>
+" original orgmode mappings treat localleader as <c-c>
+nmap <silent> <buffer> <c-c><c-t>    :call <SID>ReplaceTodo()<CR>
+
+    nmap <silent> <buffer> <localleader>t    :call OrgTodoDashboard()<CR>
 nmap <silent> <buffer> <s-CR>    :call <SID>ReplaceTodo()<CR>
 nmap <silent> <buffer> <s-right>    :call <SID>ReplaceTodo()<CR>
 nmap <silent> <buffer> <localleader><space>     :call <SID>ToggleHeadingMark(line('.'))<CR>
