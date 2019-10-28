@@ -199,11 +199,10 @@ function! org#CaptureBuffer()
     normal gg
     set nomodified
     startinsert!
-    
 endfunction
+
 function! s:ProcessCapture()
-    "normal ggVG"xy
-    let curbufnr = bufnr(g:org_capture_file)
+	let curbufnr = bufnr(g:org_capture_file)
     " check if capture file is already open or not
     if curbufnr == -1
         exe '1,$write >> ' . g:org_capture_file
@@ -217,7 +216,8 @@ function! s:ProcessCapture()
         silent write
         call org#RestoreLocation()
     endif
-    exe 'bwipeout! ' . g:org_capture_file
-   
+	if bufexists(g:org_capture_file)
+    	exe 'bwipeout! ' . g:org_capture_file
+	endif
 endfunction
 
