@@ -5,10 +5,10 @@
 " Last Change: 2011 Nov 02
 "
 " Script: http://www.vim.org/scripts/script.php?script_id=3342
-" Github page: http://github.com/hsitz/VimOrganizer 
+" Github page: http://github.com/hsitz/VimOrganizer
 " Copyright: (c) 2010, 2011 by Herbert Sitz
 " The VIM LICENSE applies to all files in the
-" VimOrganizer plugin.  
+" VimOrganizer plugin.
 " (See the Vim copyright except read "VimOrganizer"
 " in places where that copyright refers to "Vim".)
 " http://vimdoc.sourceforge.net/htmldoc/uganda.html#license
@@ -27,25 +27,25 @@ function! org#SetOrgFileType()
 	"syntax enable
                 if &filetype != 'org'
                         execute "set filetype=org"
-			
+
 "			if !exists('g:org_todo_setup')
 "				let g:org_todo_setup = 'TODO | DONE'
 "			endif
 "			if !exists('g:org_tag_setup')
 "				let g:org_tag_setup = '{home(h) work(w)}'
 "			endif
-"			
+"
 "			call OrgProcessConfigLines()
-"			exec "syntax match DONETODO '" . b:v.todoDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6" 
-"			exec "syntax match NOTDONETODO '" . b:v.todoNotDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6" 
-		
+"			exec "syntax match DONETODO '" . b:v.todoDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6"
+"			exec "syntax match NOTDONETODO '" . b:v.todoNotDoneMatch . "' containedin=OL1,OL2,OL3,OL4,OL5,OL6"
+
                 endif
-	
+
         "endif
 	runtime syntax/org.vim
 	"syntax enable
         "call OrgSetColors()
-endfunction     
+endfunction
 
 function! org#Pad(s,amt)
     return a:s . repeat(' ',a:amt - len(a:s))
@@ -55,9 +55,14 @@ function! org#Timestamp()
     return strftime("%Y-%m-%d %a %H:%M")
 endfunction
 
+"TODO allow to print file and line nunmber stamp
+function! org#Filestamp()
+    return 'file://' . expand('%:p')
+endfunction
+
 function! org#redir(command)
   let save_a = @a
-  try 
+  try
     silent! redir @a
     silent! exe a:command
     redir END
@@ -96,7 +101,7 @@ function! org#GetGroupHighlight(group)
     if GroupDetails ># ''
 	" Extract the highlighting details (the bit after "xxx")
 	let MatchGroups = matchlist(GroupDetails, '\<xxx\>\s\+\(.*\)')
-	let ExistingHighlight = MatchGroups[1] !~? 'cleared' ? MatchGroups[1] : ''	
+	let ExistingHighlight = MatchGroups[1] !~? 'cleared' ? MatchGroups[1] : ''
     else
 	" Group does not exist
 	let ExistingHighlight = ''
@@ -194,7 +199,7 @@ function! org#CaptureBuffer()
     " below is the basic template
     " a first level head with date timestamp
     normal ggVGd
-    normal i* 
+    normal i*
     silent exec "normal o:<".org#Timestamp().">"
     normal gg
     set nomodified

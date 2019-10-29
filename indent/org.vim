@@ -5,10 +5,10 @@
 " Last Change: 2011 Nov 02
 "
 " Script: http://www.vim.org/scripts/script.php?script_id=3342
-" Github page: http://github.com/hsitz/VimOrganizer 
+" Github page: http://github.com/hsitz/VimOrganizer
 " Copyright: (c) 2010, 2011 by Herbert Sitz
 " The VIM LICENSE applies to all files in the
-" VimOrganizer plugin.  
+" VimOrganizer plugin.
 " (See the Vim copyright except read "VimOrganizer"
 " in places where that copyright refers to "Vim".)
 " http://vimdoc.sourceforge.net/htmldoc/uganda.html#license
@@ -44,9 +44,9 @@ function! GetOrgIndent(...)
   " Find a non-blank line above the current line.
   "let lnum = prevnonblank(v:lnum - 1)
   let lnum = PrevNonBlank(v:lnum - 1)
-  
+
   " At the start of the file use zero indent.
-  if lnum == 0 | return 0 
+  if lnum == 0 | return 0
   endif
 
   let curline = getline(v:lnum)          " current line
@@ -68,7 +68,7 @@ function! GetOrgIndent(...)
 	  let b:v.org_list_offset=0
   endif
 
-  if (curline =~ '^\*\+ ') 
+  if (curline =~ '^\*\+ ')
 	  let ind = 0
 	  " below lines are failsafes, hopefully redundant
 	  let b:v.suppress_list_indent=0
@@ -82,17 +82,17 @@ function! GetOrgIndent(...)
   elseif curline =~ '^#+'
 	  let ind = 0
   "elseif (curline =~ '^\s*$') && (b:v.suppress_list_indent == 1)
-"			  \ && (len(synstack(v:lnum-1,1))>0) 
+"			  \ && (len(synstack(v:lnum-1,1))>0)
 "			  \ && (synIDattr(synstack(v:lnum-1,1)[0],'name') == 'orgList')
 "	  let b:v.suppress_list_indent = 0
   elseif b:v.suppress_indent == 1
 	  return indent(curline)
   elseif b:v.suppress_list_indent == 1
 	  return len(matchstr(curline,'^\s*')) + b:v.org_list_offset
-  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)') 
+  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)')
 	  let before_ind = len(matchstr(curline,'^\s*'))
 	  "let ind= ind
-	  let b:v.org_list_offset = ind - before_ind 
+	  let b:v.org_list_offset = ind - before_ind
 	  let b:v.suppress_list_indent = 1
   elseif (curline =~'^\s*\d\+[).:]\s\+\S') || (curline =~'^\s*[-+\*]\s\+\S')
 "	  if len(curline)>0
@@ -111,9 +111,9 @@ function! GetOrgIndent(...)
   return ind
 endfunction
 
-function! PrevNonBlank(line) 
+function! PrevNonBlank(line)
 	let line = prevnonblank(a:line)
-	 
+
 	if (len(synstack(line,1))>0) && (synIDattr(synstack(line,1)[0],'name') == 'orgLisp')
 		execute line + 1
 		let line = search('^#+begin_src','nb')-1
@@ -129,9 +129,9 @@ function! GetTestIndent2(lnum)
   " Find a non-blank line above the current line.
   "let lnum = prevnonblank(a:lnum - 1)
   let lnum = PrevNonBlank(a:lnum - 1)
-  
+
   " At the start of the file use zero indent.
-  if lnum == 0 | return 0 
+  if lnum == 0 | return 0
   endif
 
   let curline = getline(a:lnum)          " current line
@@ -153,7 +153,7 @@ function! GetTestIndent2(lnum)
 	  let b:v.org_list_offset=0
   endif
 
-  if (curline =~ '^\*\+ ') 
+  if (curline =~ '^\*\+ ')
 	  let ind = 0
 	  " below lines are failsafes, hopefully redundant
 	  let b:v.suppress_list_indent=0
@@ -165,17 +165,17 @@ function! GetTestIndent2(lnum)
 	  let b:v.suppress_indent=0
 	  let ind = 0
   "elseif (curline =~ '^\s*$') && (b:v.suppress_list_indent == 1)
-"			  \ && (len(synstack(a:lnum-1,1))>0) 
+"			  \ && (len(synstack(a:lnum-1,1))>0)
 "			  \ && (synIDattr(synstack(a:lnum-1,1)[0],'name') == 'orgList')
 "	  let b:v.suppress_list_indent = 0
   elseif b:v.suppress_indent == 1
 	  return indent(curline)
   elseif b:v.suppress_list_indent == 1
 	  return len(matchstr(curline,'^\s*')) + b:v.org_list_offset
-  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)') 
+  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)')
 	  let before_ind = len(matchstr(curline,'^\s*'))
 	  "let ind= ind
-	  let b:v.org_list_offset = ind - before_ind 
+	  let b:v.org_list_offset = ind - before_ind
 	  let b:v.suppress_list_indent = 1
   elseif (curline =~'^\s*\d\+[).:]\s\+\S') || (curline =~'^\s*[-+\*]\s\+\S')
 "	  if len(curline)>0
@@ -198,9 +198,9 @@ function! GetTestIndent(lnum)
   " Find a non-blank line above the current line.
   "let lnum = prevnonblank(a:lnum - 1)
   let lnum = PrevNonBlank(a:lnum - 1)
-  
+
   " At the start of the file use zero indent.
-  if lnum == 0 | return 0 
+  if lnum == 0 | return 0
   endif
 
   let curline = getline(a:lnum)          " current line
@@ -221,7 +221,7 @@ function! GetTestIndent(lnum)
 	  let b:v.org_list_offset=0
   endif
 
-  if (curline =~ '^\*\+ ') 
+  if (curline =~ '^\*\+ ')
 	  let ind = 0
 	  " below lines are failsafes, hopefully redundant
 	  let b:v.suppress_list_indent=0
@@ -233,17 +233,17 @@ function! GetTestIndent(lnum)
 	  let b:v.suppress_indent=0
 	  let ind = 0
   "elseif (curline =~ '^\s*$') && (b:v.suppress_list_indent == 1)
-"			  \ && (len(synstack(a:lnum-1,1))>0) 
+"			  \ && (len(synstack(a:lnum-1,1))>0)
 "			  \ && (synIDattr(synstack(a:lnum-1,1)[0],'name') == 'orgList')
 "	  let b:v.suppress_list_indent = 0
   elseif b:v.suppress_indent == 1
 	  return indent(curline)
   elseif b:v.suppress_list_indent == 1
 	  return len(matchstr(curline,'^\s*')) + b:v.org_list_offset
-  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)') 
+  elseif (curline =~ '^\s*\(\d\+[.):]\|[-+] \)')
 	  let before_ind = len(matchstr(curline,'^\s*'))
 	  "let ind= ind
-	  let b:v.org_list_offset = ind - before_ind 
+	  let b:v.org_list_offset = ind - before_ind
 	  let b:v.suppress_list_indent = 1
   elseif (curline =~'^\s*\d\+[).:]\s\+\S') || (curline =~'^\s*[-+\*]\s\+\S')
 "	  if len(curline)>0

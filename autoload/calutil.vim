@@ -148,7 +148,7 @@ fun! calutil#Jul2Cal(julday,...)
    let month = (mo + 2 - 12*t1)
    let year  = (100*(t2 - 49) + yr + t1)
   endif
-  
+
   let month = (month<10) ? '0' . month : month
   let day = (day < 10) ? '0' . day : day
 
