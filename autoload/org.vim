@@ -199,7 +199,7 @@ function! org#CaptureBuffer()
     " below is the basic template
     " a first level head with date timestamp
     normal ggVGd
-    normal i*
+    normal i* 
     silent exec "normal o:<".org#Timestamp().">"
     normal gg
     set nomodified
