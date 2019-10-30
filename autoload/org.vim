@@ -206,7 +206,7 @@ function! org#CaptureBuffer()
     startinsert!
 endfunction
 
-"" TODO: fix this so it saves "
+" the errors I had where becouse it symlinked to the file name
 function! s:ProcessCapture()
 	let curbufnr = bufnr(g:org_capture_file)
     " check if capture file is already open or not
@@ -222,8 +222,6 @@ function! s:ProcessCapture()
         silent write
         call org#RestoreLocation()
     endif
-	if bufexists(g:org_capture_file)
-    	exe 'bwipeout! ' . g:org_capture_file
-	endif
+	exe 'bwipeout! ' . g:org_capture_file
 endfunction
 
