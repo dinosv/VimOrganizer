@@ -7927,6 +7927,7 @@ function! s:ChangeLevel( text_lines, change_val )
     endwhile
     return mylines
 endfunction
+"TODO improve for specified file
 function! s:DoRefile(targ_list,heading_list,...)
 
     if a:0 == 1

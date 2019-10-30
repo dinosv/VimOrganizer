@@ -206,6 +206,7 @@ function! org#CaptureBuffer()
     startinsert!
 endfunction
 
+"" TODO: fix this so it saves "
 function! s:ProcessCapture()
 	let curbufnr = bufnr(g:org_capture_file)
     " check if capture file is already open or not
