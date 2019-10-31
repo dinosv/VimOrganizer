@@ -950,6 +950,9 @@ Do not compress links         pressed using Vim's conceal feature unless
 ------------------------------------------------------------------------
 NARROWING REGIONS                                    *vimorg-narrowing*
 
+NOTE: This currently does not work with the current version of the nrrwrgn
+plugin. I will soon port this feature to the newest version.
+
 VimOrganizer uses Christian Brabandt's NrwRgn plugin to edit subsections
 of an outline in separate window.  For outline sections this function is
 sometimes called "hoisting".  There are two different kinds of narrowing: (1)
