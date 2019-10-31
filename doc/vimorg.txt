@@ -643,6 +643,10 @@ CAPTURE BUFFER                *vimorg-capture-buffer*
                               *OrgCapture*
                               *g:org_capture_file*
 
+Note: g:org_capture_file cannot be a symbolic link. This will cause an issue
+when searching for the capture file as a buffer. Please use the path to the
+actual file
+
 The "capture buffer" is a buffer that can be opened
 wherever you are in Vim.  It provides a quick and
 simple way to "capture" a note in a "capture file"
