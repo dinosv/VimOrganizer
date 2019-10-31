@@ -584,7 +584,8 @@ or to the begin and end of each line (which will pose
 problems upon reformatting).
 
 NOTE: This will probably be replaced by tpope's surround plugin check it out
-at https://github.com/tpope/vim-surround
+at https://github.com/tpope/vim-surround, another plugin I suggest is
+ultisnips for snippet support
 
 Bold text                uses * delimiters
 ,cb
@@ -892,6 +893,8 @@ installed.  You can find it here:
 http://www.vim.org/scripts/script.php?script_id=293 .
 UTL itself does not use Org-mode compatible links, but it is used by
 VimOrganizer behind the scenes to follow links.
+
+NOTE: currently working on allowing for filelinks with line number support
 
 In general, an Org-mode formatted link looks like this:
 >
