@@ -583,6 +583,9 @@ to each word in the lines (for safety when reformatting)
 or to the begin and end of each line (which will pose
 problems upon reformatting).
 
+NOTE: This will probably be replaced by tpope's surround plugin check it out
+at https://github.com/tpope/vim-surround
+
 Bold text                uses * delimiters
 ,cb
 
