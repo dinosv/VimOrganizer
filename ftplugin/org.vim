@@ -7603,6 +7603,7 @@ function! OrgSetColors()
     hi! Org_Code guifg=darkgray gui=bold ctermfg=14
     hi! Org_Itals gui=italic guifg=#aaaaaa ctermfg=lightgray
     hi! Org_Bold gui=bold guifg=#aaaaaa ctermfg=lightgray
+    hi! Org_Math guifg=#3ccccc ctermfg=cyan
     hi! Org_Underline gui=underline guifg=#aaaaaa ctermfg=lightgray
     hi! Org_Marked gui=bold guibg=#bbaacc ctermbg=lightgray
     hi! Org_Lnumber guifg=#999999 ctermfg=gray

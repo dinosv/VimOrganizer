@@ -66,6 +66,7 @@ syntax match OL9 +^\(*\)\{9}\s.*+
 syn match Org_Code '=\S.\{-}\S='
 syn match Org_Itals '\(\_^\|\W\)/\zs\S[^/]\{-}\S\ze/\_W'
 syn match Org_Bold '\(\_^\|\W\)\*\zs\S[^*]\{-}\S\ze\*\_W'
+syn match Org_Math '\(\_^\|\W\)\$\zs\S[^*]\{-}\S\ze\$\_W'
 syn match Org_Underline '\(\_^\|\W\)_\zs\S[^_]\{-}\S\ze_\_W'
 syn match Org_Lnumber '^\t*\(\d\.\)*\s\s' contained
 
