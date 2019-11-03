@@ -4569,7 +4569,8 @@ function! OrgColumnsDashboard(...)
     let &more = save_more
     call s:AdjustItemLen()
     " redraw folded headings
-    setlocal foldtext=OrgFoldText()
+    " setlocal foldtext=OrgFoldText()
+    setlocal foldtext=AltOrgFoldText()
     call setpos('.',save_cursor)
 endfunction
 function! OrgDateDashboard(...)
@@ -5954,7 +5955,47 @@ function! s:CompleteOrg(findstart, base)
 endfunction
 "set completefunc=CompleteOrg
 
+"a more true to orgmode fold text
+function! AltOrgFoldText(...)
+  " let l:line = getline(v:foldstart)
+    if a:0 == 1
+        let l:line = getline(line("."))
+        let foldstart = line(".")
+    else
+        let l:line = getline(v:foldstart)
+        let foldstart = v:foldstart
+    endif
+  if match( l:line, '^[ \t]*\(\/\*\|\/\/\)[*/\\]*[ \t]*$' ) == 0
+    let initial = substitute( l:line, '^\([ \t]\)*\(\/\*\|\/\/\)\(.*\)', '\1\2', '' )
+    let linenum = v:foldstart + 1
+    while linenum < v:foldend
+      let l:line = getline( l:linenum )
+      let comment_content = substitute( l:line, '^\([ \t\/\*]*\)\(.*\)$', '\2', 'g' )
+      if comment_content != ''
+        break
+      endif
+      let l:linenum = l:linenum + 1
+    endwhile
+    let l:sub = initial . ' ' . comment_content
+  else
+    let l:sub = l:line
+    let startbrace = substitute( l:line, '^.*{[ \t]*$', '{', 'g')
+    if startbrace == '{'
+      let l:line = getline(v:foldend)
+      let endbrace = substitute( l:line, '^[ \t]*}\(.*\)$', '}', 'g')
+      if endbrace == '}'
+        let l:sub = l:sub.substitute( l:line, '^[ \t]*}\(.*\)$', '...}\1', 'g')
+      endif
+    endif
+  endif
+  let n = v:foldend - v:foldstart + 1
+  let info = n
+  let l:sub = l:sub . "..."
+  let l:sub = l:sub . "                                                                                                                  																																				"
+   return l:sub
+endfunction
 
+"old version of Org folding
 function! OrgFoldText(...)
     " Create string used for folded text blocks
     if a:0 == 1
@@ -6043,6 +6084,7 @@ function! OrgFoldText(...)
     endif
     return l:line
 endfunction
+
 function! s:MySort(comppattern) range
     let b:v.sortcompare = a:comppattern
     let b:v.complist = ['\s*\S\+','\s*\S\+\s\+\zs\S\+','\s*\(\S\+\s\+\)\{2}\zs\S\+'
@@ -6939,7 +6981,8 @@ function! OrgScreenLines() range
     while (line('.') <= endline) && (newline != oldline)
         let oldline=line('.')
         let newline=oldline
-        call add(mylines,OrgFoldText(line('.')))
+        " call add(mylines,OrgFoldText(line('.')))
+        call add(mylines,AltOrgFoldText(line('.')))
         normal j
         let newline=line('.')
     endwhile
@@ -8402,7 +8445,7 @@ call s:DeleteSigns()
 set com=sO::\ -,mO::\ \ ,eO:::,::,sO:>\ -,mO:>\ \ ,eO:>>,:>
 set fo=qtcwn
 let b:v.current_syntax = "org"
-setlocal foldtext=OrgFoldText()
+setlocal foldtext=AltOrgFoldText()
 
 "user can define OrgCustomSettings() in vimrc to change default settings
 "in org buffers.  If syntax or highlight related, though, should
