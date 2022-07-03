@@ -1,5 +1,5 @@
 function! s:AmtDone(lineno) dict
-   "use list_dict structure to calculate 
+   "use list_dict structure to calculate
    "amount done for node at lineno
    let mysum = 0
    let mycount = 0
@@ -23,7 +23,7 @@ function! orgcheck#ToggleCheck()
     call s:MakeListDict()
     let linetext = getline(line('.'))
     let curval = matchstr(linetext,' \[\zs.\ze\]')
-    let has_checkbox = match(linetext, '^\s* [-\+\*] \[.\]') > -1 
+    let has_checkbox = match(linetext, '^\s* [-\+\*] \[.\]') > -1
     if curval == 'X'
         call s:ClearCheck()
     elseif !has_checkbox
@@ -74,12 +74,12 @@ function! s:UpdateCheckSummaries(...)
    if a:0 > 0 | let lineno = a:1 | endif
    let save_pos = getpos('.')
    let this_line = line('.')
-   func! s:CheckCompare(i1, i2) 
+   func! s:CheckCompare(i1, i2)
        return a:i2 - a:i1
    endfunc
    " get reversed list of lines
    let list_lines = copy(sort(keys(g:list_dict),"s:CheckCompare"))
-   if a:0 > 0 
+   if a:0 > 0
        call s:UpdateListLine(key)
    else
       for key in list_lines
@@ -90,7 +90,7 @@ function! s:UpdateCheckSummaries(...)
 endfunction
 
 function! s:DoHeadingUpdate()
-     exec 'let lineno =<SNR>' . g:org_sid . '_OrgGetHead()'  
+     exec 'let lineno =<SNR>' . g:org_sid . '_OrgGetHead()'
      if lineno == 0 | return | endif
      exec lineno
      " delete existing stats, if any
@@ -104,14 +104,14 @@ endfunction
 function! s:UpdateListLine(key)
       let key = a:key
       if str2nr(key) > 0
-         let  parent = get(g:list_dict[key], 'p', 0)  
+         let  parent = get(g:list_dict[key], 'p', 0)
 	 if parent > 0
 	     call s:UpdateListLine(parent)
 	 endif
       endif
       if key == 'AmtDone' | return | endif
       if key == '0'
-	 " put amtdone on heading and return 
+	 " put amtdone on heading and return
          call s:DoHeadingUpdate()
 	 return
       else
@@ -139,7 +139,7 @@ endfunction
 function! s:MakeListDict()
        let save_pos = getpos('.')
        let list_dict = {'AmtDone':function('s:AmtDone'), 0:{'c':[], 'indent':0}}
-       let list_pat = '^\s* [-\+\*] *' 
+       let list_pat = '^\s* [-\+\*] *'
        let item_stack = [ 0 ]
        let last_indent = 0
 
@@ -148,12 +148,12 @@ function! s:MakeListDict()
 	   let lineno = line('.')
 	   let linetext = getline(lineno)
            let start_indent = len(matchstr(linetext, list_pat))
-           let is_list_item = match(linetext, list_pat) > -1 
-           let has_checkbox = match(linetext, '^\s* [-\+\*] \[.\]') > -1 
-	    
-	   if (linetext =~ '^\s*$') 
+           let is_list_item = match(linetext, list_pat) > -1
+           let has_checkbox = match(linetext, '^\s* [-\+\*] \[.\]') > -1
+
+	   if (linetext =~ '^\s*$')
 	       break
-	   elseif is_list_item  
+	   elseif is_list_item
 	       let list_dict[lineno] = { 'ckbox':has_checkbox, 'c':[] }
 	       let this_indent = len(matchstr(linetext, list_pat))
 	       let list_dict[lineno].indent = this_indent

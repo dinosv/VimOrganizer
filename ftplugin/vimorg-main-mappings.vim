@@ -5,10 +5,10 @@
 " Last Change: 2011 Nov 02
 "
 " Script: http://www.vim.org/scripts/script.php?script_id=3342
-" Github page: http://github.com/hsitz/VimOrganizer 
+" Github page: http://github.com/hsitz/VimOrganizer
 " Copyright: (c) 2010, 2011 by Herbert Sitz
 " The VIM LICENSE applies to all files in the
-" VimOrganizer plugin.  
+" VimOrganizer plugin.
 " (See the Vim copyright except read "VimOrganizer"
 " in places where that copyright refers to "Vim".)
 " http://vimdoc.sourceforge.net/htmldoc/uganda.html#license
@@ -55,7 +55,7 @@ nnoremap <silent> <buffer> <s-up> :call OrgDateInc(1)<CR>
 nnoremap <silent> <buffer> <s-down> :call OrgDateInc(-1)<CR>
 nnoremap <silent> <buffer> <2-LeftMouse> :call OrgMouseDate()<CR>
 nnoremap <localleader>pl :call s:MyPopup()<cr>
-"map <silent> <localleader>b  :call ShowBottomCal()<cr> 
+"map <silent> <localleader>b  :call ShowBottomCal()<cr>
 
 nnoremap <silent> <buffer> <localleader>et :call OrgTagsEdit()<cr>
 
@@ -191,7 +191,7 @@ function! OrgNaviMap(keys)
     "else
 	" exe 'normal! ' . keys
     "endif
-    
+
 endfunction
 " below are alternate mappings for terminals, which
 " don't support some of the above key combinations
@@ -214,3 +214,4 @@ nnoremap <silent> <buffer> <localleader>k    :<c-u>call OrgMoveLevel(line("."),'
 nnoremap <silent> <buffer> <localleader>j    :<c-u>call OrgMoveLevel(line("."),'down',v:count1)<CR>
 nnoremap <silent> <buffer>  <localleader>np  :call OrgNewHead('levelup')<CR>
 nnoremap <silent> <buffer>  <localleader>ns  :call OrgNewHead('leveldown')<CR>
+" vim600: set tabstop=4 shiftwidth=4 smarttab expandtab fdm=indent

@@ -2,8 +2,8 @@ Installation instructions for VimOrganizer v. 0.30, November 2011
 =================================================================
 
 1.  Install VimOrganizer files as you would any other ftplugin, with downloaded
-files going in their respective directories under your .vim (Linux/Mac) 
-or vimfiles (Windows) directory.  
+files going in their respective directories under your .vim (Linux/Mac)
+or vimfiles (Windows) directory.
 
 2.  Run helptags on the help file in the /doc directory, vimorg.txt,
 so help items can be accessed using the Vim help system.
@@ -14,7 +14,7 @@ so help items can be accessed using the Vim help system.
 
     [...and then somewhere below that:]
 
-    au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+    au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
     au BufEnter *.org            call org#SetOrgFileType()
 ------------------------------------
 
@@ -25,14 +25,14 @@ in the download.
 ALSO, you will want to install the plugins listed below.  VimOrganizer
 will work without them, but some functionality will be unavailable:
 
-4.  Make sure you have Calendar.vim installed.  
-    (Calendar.vim comes included in the /plugin/ directory as part of 
-    the Vim runtime in some Vim installs, otherwise available at: 
+4.  Make sure you have Calendar.vim installed.
+    (Calendar.vim comes included in the /plugin/ directory as part of
+    the Vim runtime in some Vim installs, otherwise available at:
     http://www.vim.org/scripts/script.php?script_id=52)
 
-Second, here are two plugins that you will want to download to 
+Second, here are two plugins that you will want to download to
 take advantage of Org-mode-like narrowing and link features that have been built
-into VimOrganizer: 
+into VimOrganizer:
 
 5.  Christian Brabandt's NarrowRegion plugin.  Find and install it from here:
     http://www.vim.org/scripts/script.php?script_id=3075
@@ -41,10 +41,10 @@ into VimOrganizer:
 
 If you are running on Windows another plugin will be useful:
 
-7.  If you're running on Windows then you may want to get Peter Rodding's 
+7.  If you're running on Windows then you may want to get Peter Rodding's
     shell.vim plugin.  It's not necessary, but if you have installed
-    it VimOrganizer will use it to ensure that you don't see  
-    the annoying Windows command prompt window pop up when VimOrganizer 
+    it VimOrganizer will use it to ensure that you don't see
+    the annoying Windows command prompt window pop up when VimOrganizer
     calls out to Emacs/Org-mode.
     http://www.vim.org/scripts/script.php?script_id=3123
 
@@ -58,16 +58,16 @@ http://www.gnu.org/software/emacs/
 Vimorg uses a variable, g:org_command_for_emacsclient, to hold the
 command that will start the emacsclient on your system.  If you are
 not on Linux or OSX you will need to set this explicitly in your
-vimrc file.  
+vimrc file.
 
 Also, please note that emacsclient works slightly differently on
-Windows and Linux/OSX systems.  You must manually start 
+Windows and Linux/OSX systems.  You must manually start
 Emacs on Linux/OSX or calls to emacsclient will not work.  Please see
 :h vimorg-emacs-setup
 
 For Emacs you should also install a hook function in the .emacs file,
 which will automatically make minor conversions when you export and/or
-open a VimOrganizer .org file in Emacs. You can find the text for that 
+open a VimOrganizer .org file in Emacs. You can find the text for that
 function in the VimOrganizer help file:
 :h vimorg-orgmode-conversion
 

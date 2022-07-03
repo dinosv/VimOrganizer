@@ -416,7 +416,7 @@ function! org#tbl#format(lnum, ...) "{{{
     let row = repeat(' ', indent).row
     call setline(lnum, row)
   endfor
-  
+
   let &tw = s:textwidth
 endfunction "}}}
 
@@ -451,7 +451,7 @@ function! org#tbl#create(...) "{{{
   for r in range(rows - 1)
     call add(lines, row)
   endfor
-  
+
   call append(line('.'), lines)
 endfunction "}}}
 
@@ -468,7 +468,7 @@ function! org#tbl#reset_tw(lnum) "{{{
   if !s:is_table(line)
     return
   endif
-  
+
   let s:textwidth = &tw
   let &tw = 0
 endfunction "}}}

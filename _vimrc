@@ -9,7 +9,7 @@
 let g:ft_ignore_pat = '\.org'
 filetype plugin indent on
 " and then put these lines in vimrc somewhere after the line above
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org            call org#SetOrgFileType()
 " let g:org_capture_file = '~/org_files/mycaptures.org'
 command! OrgCapture :call org#CaptureBuffer()
@@ -23,7 +23,7 @@ syntax on
 "==============================================================
 
 " The variables below are used to define the default Todo list and
-" default Tag list.  Both of these can also be defined 
+" default Tag list.  Both of these can also be defined
 " on a document-specific basis by config lines in a file.
 " See :h vimorg-todo-metadata and/or :h vimorg-tag-metadata
 " 'TODO | DONE' is the default, so not really necessary to define it at all
@@ -34,7 +34,7 @@ let g:org_todo_setup='TODO | DONE'
 " include a tags setup string if you want:
 let g:org_tags_alist='{@home(h) @work(w) @tennisclub(t)} {easy(e) hard(d)} {computer(c) phone(p)}'
 "
-" g:org_agenda_dirs specify directories that, along with 
+" g:org_agenda_dirs specify directories that, along with
 " their subtrees, are searched for list of .org files when
 " accessing EditAgendaFiles().  Specify your own here, otherwise
 " default will be for g:org_agenda_dirs to hold single
@@ -93,7 +93,7 @@ function! OrgCustomColors()
     " heading when unfolded and one for folded.  Default is to make
     " them the same except for the folded version being bold:
     " assign OL1 pair for level 1, OL2 pair for level 2, etc.
-    "hi! OL1 guifg=somecolor guibg=somecolor 
+    "hi! OL1 guifg=somecolor guibg=somecolor
     "hi! OL1Folded guifg=somecolor guibg=somecolor gui=bold
 
 
@@ -144,27 +144,27 @@ function! OrgCustomColors()
 
     " Use g:org_todo_custom_highlights to set up highlighting for individual
     " TODO items.  Without this all todos that designate an unfinished state
-    " will be highlighted using NOTDONETODO highlight (see above) 
+    " will be highlighted using NOTDONETODO highlight (see above)
     " and all todos that designate a finished state will be highlighted using
     " the DONETODO highlight (see above).
-    let g:org_todo_custom_highlights = 
+    let g:org_todo_custom_highlights =
                \     { 'NEXT': { 'guifg':'#888888', 'guibg':'#222222',
                \              'ctermfg':'gray', 'ctermbg':'darkgray'},
-               \      'WAITING': { 'guifg':'#aa3388', 
+               \      'WAITING': { 'guifg':'#aa3388',
                \                 'ctermfg':'red' } }
 
 endfunction
 
 " Below are two examples of Org-mode "hook" functions
 " These present opportunities for end-user customization
-" of how VimOrganizer works.  For more info see the 
+" of how VimOrganizer works.  For more info see the
 " documentation for hooks in Emacs' Org-mode documentation:
 " http://orgmode.org/worg/org-configs/org-hooks.php#sec-1_40
 "
-" These two hooks are currently the only ones enabled in 
+" These two hooks are currently the only ones enabled in
 " the VimOrganizer codebase, but they are easy to add so if
 " there's a particular hook you want go ahead and request it
-" or look for where these hooks are implemented in 
+" or look for where these hooks are implemented in
 " /ftplugin/org.vim and use them as example for placing your
 " own hooks in VimOrganizer:
 function! Org_property_changed_functions(line,key, val)
